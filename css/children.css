@@ -220,13 +220,6 @@ body {
 /* ==========================================
    3. 기타 애니메이션 및 유틸리티 (그대로 유지)
    ========================================== */
-footer {
-    margin-top: 80px;
-    text-align: center;
-    font-size: 0.9rem;
-    color: #777777;
-    padding-bottom: 40px;
-}
 
 @keyframes floatBall {
     0% { transform: translateY(0); }
