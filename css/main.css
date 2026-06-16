@@ -1,12 +1,15 @@
+/* ==========================================
+   1. 디자인 시스템 변수 및 초기화
+   ========================================== */
 :root {
-    --color-bg: #FAF9F6;
-    --color-main: #2F2F2F;
-    --color-point: #D2B48C;
-    --color-white: #FFFFFF;
-
-    --font-sans: 'Noto Sans KR', sans-serif;
+    --color-bg: #FAF9F6;     /* 기본 배경색 (아이보리) */
+    --color-main: #2F2F2F;   /* 기본 글자색 (짙은 회색) */
+    --color-point: #D2B48C;  /* 포인트 컬러 (브라운) */
+    --color-white: #FFFFFF;  /* 서브 배경색 (화이트) */
+    --font-sans: 'Noto Sans KR', sans-serif; /* 메인 폰트 */
 }
 
+/* 여백 초기화 및 박스 크기 계산 기준 통일 */
 * {
     margin: 0;
     padding: 0;
@@ -14,43 +17,21 @@
 }
 
 body {
-    background-color:  var(--color-bg);
+    background-color: var(--color-bg);
     color: var(--color-main);
     font-family: var(--font-sans);
 }
 
+/* 기본 레이아웃 컨테이너 (중앙 정렬 및 최대 너비 제한) */
 .container {
     max-width: 1000px;
     margin: 50px auto;
     padding: 30px;
 }
 
-.main-nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    list-style: none;
-    padding: 0;
-}
-
-.main-nav a:hover, .main-nav a:focus {
-    color: var(--color-point);
-    transform: translateY(-3px);
-}
-
-.main-nav a {
-    text-decoration: none;
-    color: var(--color-main);
-    font-weight: 500;
-    padding: 8px 12px;
-    transition: all 0.3s;
-    display: inline-block;
-}
-
-.main-nav a:active {
-    background-color: var(--color-point);  
-}
-
+/* ==========================================
+   2. 상단 헤더 및 네비게이션바
+   ========================================== */
 .site-header {
     display: flex;
     flex-direction: column;
@@ -60,6 +41,57 @@ body {
     border-bottom: 1px solid #EAEAEA;
 }
 
+/* 메인 타이틀 자간 및 그림자 효과 */
+.site-header h1 {
+    font-weight: 700;
+    color: var(--color-main);
+    letter-spacing: -0.05em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* 메뉴 가로 정렬 */
+.main-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    list-style: none;
+    padding: 0;
+}
+
+/* 메뉴 링크 기본 스타일 및 호버 애니메이션 설정 */
+.main-nav a {
+    text-decoration: none;
+    color: var(--color-main);
+    font-weight: 500;
+    padding: 8px 12px;
+    transition: all 0.3s;
+    display: inline-block;
+}
+
+/* 메뉴 마우스 호버 시 포인트 컬러 전환 및 위로 들림 효과 */
+.main-nav a:hover, .main-nav a:focus {
+    color: var(--color-point);
+    transform: translateY(-3px);
+}
+
+/* 메뉴 하단 포인트 라인 장식 */
+.main-nav a::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-point);
+    margin-top: 4px;
+}
+
+/* 메뉴 클릭 시 피드백 배경색 */
+.main-nav a:active {
+    background-color: var(--color-point);  
+}
+
+/* ==========================================
+   3. 메인 본문 카드형 섹션 (인터랙션)
+   ========================================== */
 .intro-section {
     background: linear-gradient(to bottom, var(--color-white), var(--color-bg));
     padding: 40px;
@@ -70,6 +102,7 @@ body {
     background-size: 200% 100%;
 }
 
+/* 카드 마우스 호버: 위로 뜨기, 그림자 확장, 그라데이션 이동 */
 .intro-section:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -78,6 +111,7 @@ body {
     transition: all 0.4s ease;
 }
 
+/* 카드 내부 이미지 기본 스타일 (60% 흑백 필터 + 둥둥 애니메이션) */
 .intro-section img {
     max-width: 100%;
     height: auto;
@@ -90,6 +124,12 @@ body {
     animation: floatBall 3s ease-in-out infinite;
 }
 
+/* 카드 마우스 호버 시 이미지 흑백 필터 해제 (컬러 복원) */
+.intro-section:hover img {
+    filter: grayscale(0%);
+}
+
+/* 본문 요약 텍스트 스타일 및 한 줄 넘침 방지(...) 처리 */
 .intro-section p {
     font-size: 1.1rem;
     font-weight: 400;
@@ -100,55 +140,19 @@ body {
     text-overflow: ellipsis;
 }
 
-footer {
-    margin-top: 80px;
-    text-align: center;
-    font-size: 0.9rem;
-    color:#777777;
-}
-
-@media (max-width: 768px) {
-    .container {
-    padding: 15px;
-    margin: 20px auto;
-    }
-}
-
-.site-header h1 {
-    font-weight: 700;
-    color: var(--color-main);
-    letter-spacing: -0.05em;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.intro-section:hover img {
-    filter: grayscale(0%);
-}
-
-@keyframes floatBall {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-6px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-.main-nav a::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: var(--color-point);
-    margin-top: 4px;
-}
-
+/* ==========================================
+   4. 서브페이지 대응 및 예외 패치
+   ========================================== */
+/* 서브 소개 페이지(.introduce) 내 카드는 왼쪽 정렬로 덮어쓰기 */
 .introduce .intro-section{
     display: block;
     text-align: left;
+}
+
+/* 네비게이션 바 내에 p 태그 메뉴가 있을 경우의 스타일 및 호버 보정 */
+.main-nav p {
+    text-align: center;
+    font-weight: bold;
 }
 
 .main-nav p:hover {
@@ -157,7 +161,7 @@ footer {
     cursor: pointer;
     background-position: right center;
     transition: all 0.4s ease;
-    color:var(--color-point);
+    color: var(--color-point);
 }
 
 .main-nav p::after {
@@ -169,7 +173,28 @@ footer {
     margin-top: 4px;
 }
 
-.main-nav p {
+/* ==========================================
+   5. 푸터 및 애니메이션 키프레임, 반응형
+   ========================================== */
+/* 하단 카피라이트 영역 */
+footer {
+    margin-top: 80px;
     text-align: center;
-    font-weight: bold;
+    font-size: 0.9rem;
+    color: #777777;
+}
+
+/* 모바일 화면 (태블릿/스마트폰) 레이아웃 대응 */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        margin: 20px auto;
+    }
+}
+
+/* 이미지가 위아래로 6px씩 부드럽게 유영하는 효과 정의 */
+@keyframes floatBall {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
 }
