@@ -116,7 +116,7 @@ body {
    2. 신진서 페이지(screen4) 전용 레이아웃 추가
    ========================================== */
 
-/* 네가 작성한 .introduce 내부 정렬을 왼쪽(left)으로 덮어쓰는 코드 그대로 활용 */
+/* .introduce 내부 정렬을 왼쪽(left)으로 덮어쓰는 코드 그대로 활용 */
 .introduce .intro-section {
     display: block;
     text-align: left;
@@ -139,7 +139,7 @@ body {
     border-bottom: 1px dashed #EAEAEA; /* 내용 구분을 위한 정갈한 점선 */
 }
 
-/* 이미지 스타일: 네가 홈 화면에 쓴 필터 및 floatBall 애니메이션 그대로 이식 */
+/* 이미지 스타일: 홈 화면에 쓴 필터 및 floatBall 애니메이션 그대로 이식 */
 .profile-box img {
     width: 150px;
     height: auto;
